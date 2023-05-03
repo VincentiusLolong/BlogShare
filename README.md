@@ -1,5 +1,5 @@
 # BlogShare
-website personal blog with ReactJs and Go-Fiber 
+website personal blog with ReactJs and Go-Fiber (on-going)
 
 technology used : 
 Backend (Go):
