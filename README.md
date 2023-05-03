@@ -5,7 +5,7 @@ technology used :
 Backend (Go):
 - Fiber (Framework)
 - Json Web Token (JWT)
-- Session-Based Auth
+- Authentication
 - PostgreSQL
 - Bcrypt
 - RESTful API
