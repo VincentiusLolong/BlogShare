@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
-const Home = () => {
-    return(
-        <div>
-            Home
-        </div>
-    );
-}
+// interface Props {
+//   isTrue: boolean;
+//   setisTrue: React.Dispatch<React.SetStateAction<boolean>>;
+// }
+  
+const Home = (props: {name:string, created:string}) => {
+  return props.name ? (
+    <p>
+      Welcome: {props.name}, Account Created {props.created}
+    </p>
+  ) : (
+    <p>Hello</p>
+  );
+};
+
 export default Home;
+  
+ 

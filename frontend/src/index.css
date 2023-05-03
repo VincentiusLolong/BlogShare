@@ -50,3 +50,50 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.form-signin input[type="date"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+nav {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 0 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.left-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.left-nav li {
+  margin-right: 20px;
+}
+
+.right-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.right-nav li {
+  margin-left: 20px;
+}
+
+nav a:hover {
+  color: #fff; /* change to desired hover color */
+  text-decoration: none;
+}
