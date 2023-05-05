@@ -21,7 +21,7 @@ Backend :
 > cd backend
 > go mod tidy
 > go run main.go
-...
+```<br>
 
 frontend : 
 ```console
