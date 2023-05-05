@@ -28,4 +28,6 @@ frontend :
 > cd frontend
 > npm install
 > npm start
-...
+```
+
+still in development stage
