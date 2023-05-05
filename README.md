@@ -31,7 +31,5 @@ frontend :
 ```
 
 
-
-
-#                                                             This Project still in development stage                                                                 #
-#                                                                             @ 2023                                                                                  #
+This Project still in development stage                                                                 
+@ 2023                                                                                  
