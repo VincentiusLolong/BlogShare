@@ -24,7 +24,8 @@ Backend :
 ```
 
 frontend : 
-```console
+```
 > cd frontend
 > npm install
 > npm start
+...
