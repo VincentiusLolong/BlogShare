@@ -22,6 +22,7 @@ type Controllers interface {
 
 	//user data
 	CreateContent(c *fiber.Ctx) error
+	GetAccountContent(c *fiber.Ctx) error
 }
 
 type controller struct {
@@ -64,7 +65,6 @@ func (ct *controller) SignUp(c *fiber.Ctx) error {
 	if validationErr := v.Struct(&user); validationErr != nil {
 		return ct.status(badr, "error", validationErr.Error())
 	}
-
 	pgxrow, errs := ct.service.SignUp(user)
 	if errs != nil {
 		return ct.status(badr, "error", errs.Error())

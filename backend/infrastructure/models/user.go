@@ -35,9 +35,19 @@ type PublicUser struct {
 
 type Contents struct {
 	Content_id     uuid.UUID `json:"content_id,omitempty"`
-	Account_create time.Time `json:"time,omitempty"`
+	Content_create time.Time `json:"content_create,omitempty"`
+	Content_edit   time.Time `json:"content_edit,omitempty"`
 	Account_id     uuid.UUID `json:"account_id,omitempty"`
 	Content_type   string    `json:"content_type" validate:"required"`
 	Title          string    `json:"title" validate:"required"`
-	Contents       string    `json:"contents" validate:"required"`
+	Content_data   string    `json:"contents" validate:"required"`
+}
+
+type Userconten struct {
+	Username       string    `json:"username,omitempty"`
+	Content_id     uuid.UUID `json:"content_id,omitempty"`
+	Content_create time.Time `json:"content_create,omitempty"`
+	Content_type   string    `json:"content_type" validate:"required"`
+	Title          string    `json:"title" validate:"required"`
+	Content_data   string    `json:"contents" validate:"required"`
 }

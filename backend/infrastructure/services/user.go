@@ -14,7 +14,9 @@ type Services interface {
 	SignUp(user models.User) (string, error)
 	Signin(users models.Login) (uuid.UUID, error)
 	HomepageUsers(ids string) (map[string]interface{}, error)
+
 	CreateContent(contents models.Contents, userid string) (string, error)
+	GetUserContent(userid string) ([]models.Userconten, error)
 	// Logout() (err error)
 }
 

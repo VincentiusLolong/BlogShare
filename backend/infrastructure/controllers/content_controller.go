@@ -1,10 +1,12 @@
 package controllers
 
 import (
+	"errors"
 	"fmt"
 	"mailinglist/infrastructure/models"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/jackc/pgx/v5"
 )
 
 func (ct *controller) CreateContent(c *fiber.Ctx) error {
@@ -26,4 +28,17 @@ func (ct *controller) CreateContent(c *fiber.Ctx) error {
 	}
 
 	return ct.status(okr, "result", "content added")
+}
+
+func (ct *controller) GetAccountContent(c *fiber.Ctx) error {
+	userid := fmt.Sprintf("%v", c.Locals("id"))
+	contentuser, errs := ct.service.GetUserContent(userid)
+	if errs != nil {
+		if errors.Is(errs, pgx.ErrNoRows) {
+			return &fiber.Error{Code: fiber.StatusNotFound, Message: "Content Not Found"}
+		} else {
+			return &fiber.Error{Code: fiber.StatusInternalServerError, Message: "Failed to get content"}
+		}
+	}
+	return c.JSON(contentuser)
 }
