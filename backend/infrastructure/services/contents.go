@@ -3,6 +3,7 @@ package services
 import (
 	"fmt"
 	"mailinglist/infrastructure/models"
+	"regexp"
 )
 
 func (s *services) CreateContent(contents models.Contents, userid string) (string, error) {
@@ -12,7 +13,7 @@ func (s *services) CreateContent(contents models.Contents, userid string) (strin
 }
 
 func (s *services) GetUserContent(userid string) ([]models.Userconten, error) {
-	data := fmt.Sprintf("SELECT u.username, c.content_id, c.content_create, c.content_type, c.title,c.contents FROM account u INNER JOIN contents c ON u.account_id = c.account_id WHERE u.account_id = '%v'LIMIT 5 OFFSET 0", userid)
+	data := fmt.Sprintf("SELECT u.username ,c.content_id ,c.content_create ,c.content_type ,c.title ,c.contents FROM account u INNER JOIN contents c ON u.account_id = c.account_id WHERE u.account_id = '%v'LIMIT 5 OFFSET 0", userid)
 	_, contentrow := s.psql.PGRowQuery(data, false)
 
 	var allcontent []models.Userconten
@@ -29,4 +30,17 @@ func (s *services) GetUserContent(userid string) ([]models.Userconten, error) {
 	}
 
 	return allcontent, nil
+}
+
+func (s *services) EditContent(contents models.GetContent, userid string) (string, error) {
+	data := fmt.Sprintf("UPDATE contents SET content_edit=current_timestamp , content_type='%v' , title='%v' , contents='%v' WHERE account_id = '%v' and content_id ='%v'", contents.Content_type, contents.Title, contents.Content_data, userid, contents.Content_id)
+	re := regexp.MustCompile(`,\s*\w+=' ?'`)
+	data = re.ReplaceAllString(data, "")
+
+	row, errdata := s.psql.PGExecQuery(data)
+	if errdata != nil {
+		return "", errdata
+	}
+
+	return row, nil
 }

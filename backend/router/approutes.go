@@ -28,4 +28,5 @@ func Routers(a *fiber.App) {
 	secure.Delete("/logout", controller.Logout)
 	secure.Post("/addcontent", controller.CreateContent)
 	secure.Get("/getusercontent", controller.GetAccountContent)
+	secure.Put("/editcontent", controller.EditContent)
 }

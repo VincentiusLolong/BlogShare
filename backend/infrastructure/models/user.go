@@ -12,7 +12,7 @@ type User struct {
 	Email          string    `json:"email" validate:"required,email"`
 	Username       string    `json:"username" validate:"required"`
 	Password       string    `json:"password" validate:"required"`
-	Birth_date     string    `json:"birth_date,omitempty"`
+	// Birth_date     string    `json:"birth_date,omitempty"`
 	// Profile        Profile
 }
 
@@ -50,4 +50,21 @@ type Userconten struct {
 	Content_type   string    `json:"content_type" validate:"required"`
 	Title          string    `json:"title" validate:"required"`
 	Content_data   string    `json:"contents" validate:"required"`
+}
+
+type GetContent struct {
+	Content_id   uuid.UUID `json:"content_id,omitempty"`
+	Content_type string    `json:"content_type,omitempty"`
+	Title        string    `json:"title,omitempty"`
+	Content_data string    `json:"contents,omitempty"`
+}
+
+type Profile struct {
+	Profile_id   uuid.UUID
+	Account_id   uuid.UUID
+	Birth_date   time.Time
+	Contact_info int
+	Locations    string
+	Education    string
+	About        string
 }

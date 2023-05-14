@@ -23,6 +23,7 @@ type Controllers interface {
 	//user data
 	CreateContent(c *fiber.Ctx) error
 	GetAccountContent(c *fiber.Ctx) error
+	EditContent(c *fiber.Ctx) error
 }
 
 type controller struct {

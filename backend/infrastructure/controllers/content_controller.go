@@ -42,3 +42,24 @@ func (ct *controller) GetAccountContent(c *fiber.Ctx) error {
 	}
 	return c.JSON(contentuser)
 }
+
+func (ct *controller) EditContent(c *fiber.Ctx) error {
+	userid := fmt.Sprintf("%v", c.Locals("id"))
+
+	var usercontents models.GetContent
+
+	if err := c.BodyParser(&usercontents); err != nil {
+		return &fiber.Error{Code: fiber.StatusNotFound, Message: err.Error()}
+	}
+
+	if validationErr := v.Struct(&usercontents); validationErr != nil {
+		return &fiber.Error{Code: fiber.StatusNotFound, Message: validationErr.Error()}
+	}
+
+	updateduser, errs := ct.service.EditContent(usercontents, userid)
+	if errs != nil {
+		return &fiber.Error{Code: fiber.StatusNotFound, Message: "Cannot Edit"}
+	}
+
+	return c.JSON(updateduser)
+}

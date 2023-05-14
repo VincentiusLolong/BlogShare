@@ -17,6 +17,7 @@ type Services interface {
 
 	CreateContent(contents models.Contents, userid string) (string, error)
 	GetUserContent(userid string) ([]models.Userconten, error)
+	EditContent(contents models.GetContent, userid string) (string, error)
 	// Logout() (err error)
 }
 
@@ -52,7 +53,7 @@ func (s *services) SignUp(user models.User) (string, error) {
 	if errs != nil {
 		return "", errs
 	}
-	data := fmt.Sprintf("INSERT INTO Account(email, username, password, birth_date) VALUES ('%v','%v','%v','%v')", user.Email, user.Username, hash, user.Birth_date)
+	data := fmt.Sprintf("INSERT INTO Account(email, username, password) VALUES ('%v','%v','%v')", user.Email, user.Username, hash)
 	row, errdata := s.psql.PGExecQuery(data)
 	if errs != nil {
 		return "", errdata
