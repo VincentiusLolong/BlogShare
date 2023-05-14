@@ -13,3 +13,23 @@ Backend (Go):
 Frontend (ReactJs) :
 - Typescript (.TSX)
 - Bootstrap & CSS
+
+how to run :
+
+Backend :
+```
+> cd backend
+> go mod tidy
+> go run main.go
+```
+
+frontend : 
+```
+> cd frontend
+> npm install
+> npm start
+```
+
+
+This Project still in development stage                                                                 
+@ 2023                                                                                  
